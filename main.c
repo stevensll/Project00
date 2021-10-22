@@ -22,7 +22,7 @@ int main(){
   printf("%s\n", find_song(playlist, "Bob Dylan"));
 
   printf("Testing remove_node:\n\t");
-  print_list(remove_node(playlist, "Pink Floyd", "Wish You Were Here");
+  print_list(remove_node(playlist, "Pink Floyd", "Wish You Were Here"));
 
   printf("Testing song_cmp:\n\t");
 
