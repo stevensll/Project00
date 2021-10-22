@@ -21,6 +21,9 @@ int main(){
   printf("Testing find_song:\n\t");
   printf("%s\n", find_song(playlist, "Bob Dylan"));
 
+  printf("Testing remove_node:\n\t");
+  print_list(remove_node(playlist, "Pink Floyd", "Wish You Were Here");
+
   printf("Testing song_cmp:\n\t");
 
   struct song_node * pcomp1 = insert_front(0, "even flow", "pearl jam");

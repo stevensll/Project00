@@ -64,7 +64,24 @@ struct song_node * random_node(struct song_node *node){
 }
 
 struct song_node * remove_node(struct song_node *node, char *artist, char *name){
-
+    struct song_node *temp;
+    struct song_node *front = node;
+    if ((!strcasecmp((node->artist), artist)) && (!strcasecmp((node->name), name))) {
+        temp = node->next;
+        free(node);
+        return temp;
+    }
+    while (node->next) {
+        if ((!strcasecmp(((node->next)->artist), artist)) && (!strcasecmp(((node->next)->name), name))) {
+            temp = node->next;
+            free(node->next);
+           // temp->next = ((temp->next)->next);
+            temp = temp->next;
+            break;
+        }
+        else node = (node->next);
+    }
+    return front;
 }
 
 struct song_node * free_list(struct song_node *node){
