@@ -30,23 +30,23 @@ void song_cmp_test(){
 }
 
 int main(){
-    // struct song_node * playlist = insert_front(0 ,"Wonderwall","Oasis");
-    // playlist = insert_front(playlist, "Wish You Were Here","Pink Floyd");
-    // playlist = insert_front(playlist, "All Along the Watchtower","Bob Dylan");
-    // playlist = insert_front(playlist, "Little Wing","Jimi Hendrix");
-    // playlist = insert_front(playlist, "Layla","Cream");
+    struct song_node * playlist = insert_front(0 ,"Wonderwall","Oasis");
+    playlist = insert_front(playlist, "Wish You Were Here","Pink Floyd");
+    playlist = insert_front(playlist, "All Along the Watchtower","Bob Dylan");
+    playlist = insert_front(playlist, "Little Wing","Jimi Hendrix");
+    playlist = insert_front(playlist, "Layla","Cream");
 
-    // printf("Testing print_list:\n\t");
-    // print_list(playlist);
+    printf("Testing print_list:\n\t");
+    print_list(playlist);
 
-    // printf("Testing find_node:\n\t");
-    // print_song_node(find_node(playlist, "Bob Dylan","All Along the Watchtower"));
+    printf("Testing find_node:\n\t");
+    print_song_node(find_node(playlist, "Bob Dylan","All Along the Watchtower"));
 
-    // printf("Testing find_song:\n\t");
-    // printf("%s\n", find_song(playlist, "Bob Dylan"));
+    printf("Testing find_song:\n\t");
+    printf("%s\n", find_song(playlist, "Bob Dylan"));
 
-    // printf("Testing remove_node:\n\t");
-    // print_list(remove_node(playlist, "Pink Floyd", "Wish You Were Here"));
+    printf("Testing remove_node:\n\t");
+    print_list(remove_node(playlist, "Pink Floyd", "Wish You Were Here"));
 
     song_cmp_test();
 

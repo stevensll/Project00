@@ -26,7 +26,7 @@ void print_list(struct song_node *node){
 
 void print_song_node(struct song_node *node){
     if (node) printf("{%s, %s}\n", node->artist, node->name);
-    else printf("Node not found\n");
+    else printf("Node not found");
 }
 
 struct song_node * ordered_insert(struct song_node *node, char *name, char *artist){
@@ -65,6 +65,7 @@ struct song_node * random_node(struct song_node *node){
 }
 
 struct song_node * remove_node(struct song_node *node, char *artist, char *name){
+    if (!node) return node;
     struct song_node *temp;
     struct song_node *front = node;
     if ((!strcasecmp((node->artist), artist)) && (!strcasecmp((node->name), name))) {
@@ -75,9 +76,8 @@ struct song_node * remove_node(struct song_node *node, char *artist, char *name)
     while (node->next) {
         if ((!strcasecmp(((node->next)->artist), artist)) && (!strcasecmp(((node->next)->name), name))) {
             temp = node->next;
-            free(node->next);
-           // temp->next = ((temp->next)->next);
-            temp = temp->next;
+            node->next = node->next->next;
+            free(temp);
             break;
         }
         else node = (node->next);
