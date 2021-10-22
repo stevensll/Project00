@@ -39,19 +39,19 @@ int songcmp(struct song_node *a, struct song_node *b){
 
 
 
-struct song_node * find_node(char *artist, char *name){
+struct song_node * find_node(struct song_node *node, char *artist, char *name){
     
 }
 
-char * find_song(char * artist){
+char * find_song(struct song_node *node, char * artist){
 
 }
 
-struct song_node * random_node(){
+struct song_node * random_node(struct song_node *node){
 
 }
 
-struct song_node * remove_node(char *artist, char *name){
+struct song_node * remove_node(struct song_node *node, char *artist, char *name){
 
 }
 
