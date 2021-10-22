@@ -26,6 +26,7 @@ void print_list(struct song_node *node){
 
 void print_song_node(struct song_node *node){
     if (node) printf("{%s, %s}\n", node->artist, node->name);
+    else printf("Node not found\n");
 }
 
 struct song_node * ordered_insert(struct song_node *node, char *name, char *artist){
