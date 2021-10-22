@@ -18,13 +18,23 @@ int main(){
   printf("Testing song_cmp:\n\t");
 
   struct song_node * pcomp1 = insert_front(0, "even flow", "pearl jam");
-  struct song_node * pcomp2 = insert_front(0, "time", "plink floyd");
-  printf("%d\n", songcmp(pcomp1, pcomp2));
-
+  pcomp1 = insert_front(pcomp1, "even flow", "pearl jam");
+  printf("Comparing song: ");
+  print_list(pcomp1);
+  printf("\t\t%d\n", songcmp(pcomp1->next, pcomp1));
   
+  struct song_node * pcomp2 = insert_front(0, "even flow", "pearl jam");
+  pcomp2 = insert_front(pcomp2, "alive", "pearl jam");
+  printf("\tComparing song: ");
+  print_list(pcomp2);
+  printf("\t\t%d\n", songcmp(pcomp2->next, pcomp2));
 
+  struct song_node * pcomp3 = insert_front(0, "even flow", "pearl jam");
+  pcomp3 = insert_front(pcomp3, "time", "pink floyd");
+  printf("\tComparing song: ");
+  print_list(pcomp3);
+  printf("\t\t%d\n", songcmp(pcomp3->next, pcomp3));
 
-  
 
   return 0;
 }

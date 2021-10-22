@@ -30,16 +30,17 @@ struct song_node * ordered_insert(struct song_node *node, char *name, char *arti
 
 // compares alphabetical by artist then by song name
 int songcmp(struct song_node *a, struct song_node *b){
-    int val = strcmp(a->artist, b->artist);
-    if (val == 0){
-        return strcmp(a->name, b->name); 
-    } else return val;
+    int val = strcasecmp(a->artist, b->artist);
+    if (!val){
+        val = strcasecmp(a->name, b->name); 
+    }
+    return val;
 }
 
 
 
 struct song_node * find_node(char *artist, char *name){
-
+    
 }
 
 char * find_song(char * artist){
