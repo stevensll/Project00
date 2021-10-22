@@ -50,7 +50,7 @@ struct song_node * find_node(struct song_node *node, char *artist, char *name){
     return 0;
 }
 
-// returns the name of the first song by the given author
+// returns the name of the first song by the given artist
 char * find_song(struct song_node *node, char * artist){
     while (node) {
         if (!strcasecmp((node->artist), artist)) return node->name;
