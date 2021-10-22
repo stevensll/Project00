@@ -17,6 +17,8 @@ int songcmp(struct song_node *a, struct song_node *b);
 
 void print_list(struct song_node *node);
 
+void print_song_node(struct song_node *node);
+
 struct song_node * find_node(struct song_node *node, char *artist, char *name);
 
 char * find_song(struct song_node *node, char * artist);

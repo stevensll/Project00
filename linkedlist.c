@@ -24,6 +24,10 @@ void print_list(struct song_node *node){
     printf("]\n");
 }
 
+void print_song_node(struct song_node *node){
+    if (node) printf("{%s, %s}\n", node->artist, node->name);
+}
+
 struct song_node * ordered_insert(struct song_node *node, char *name, char *artist){
 
 }
@@ -37,14 +41,22 @@ int songcmp(struct song_node *a, struct song_node *b){
     return val;
 }
 
-
-
+// returns a node containing the given artist and name
 struct song_node * find_node(struct song_node *node, char *artist, char *name){
-    
+    while (node) {
+        if ((!strcasecmp((node->artist), artist)) && (!strcasecmp((node->name), name))) return node;
+        else node = (node->next);
+    }
+    return 0;
 }
 
+// returns the name of the first song by the given author
 char * find_song(struct song_node *node, char * artist){
-
+    while (node) {
+        if (!strcasecmp((node->artist), artist)) return node->name;
+        else node = (node->next);
+    }
+    return 0;
 }
 
 struct song_node * random_node(struct song_node *node){

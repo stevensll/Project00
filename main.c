@@ -15,6 +15,12 @@ int main(){
   printf("Testing print_list:\n\t");
   print_list(playlist);
   
+  printf("Testing find_node:\n\t");
+  print_song_node(find_node(playlist, "Bob Dylan","All Along the Watchtower"));
+
+  printf("Testing find_song:\n\t");
+  printf("%s\n", find_song(playlist, "Bob Dylan"));
+
   printf("Testing song_cmp:\n\t");
 
   struct song_node * pcomp1 = insert_front(0, "even flow", "pearl jam");
@@ -35,6 +41,7 @@ int main(){
   print_list(pcomp3);
   printf("\t\t%d\n", songcmp(pcomp3->next, pcomp3));
 
+  
 
   return 0;
 }
