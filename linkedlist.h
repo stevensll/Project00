@@ -4,8 +4,8 @@
 #include <string.h>
 
 struct song_node {
-    char name[100];
-    char artist[100];
+    char name[200];
+    char artist[200];
     struct song_node *next;
 };
 
