@@ -9,9 +9,9 @@ struct song_node {
     struct song_node *next;
 };
 
-struct song_node * insert_front(struct song_node *node, char *name, char *artist);
+struct song_node * insert_front(struct song_node *node, char *artist, char *name);
 
-struct song_node * ordered_insert(struct song_node *node, char *name, char *artist);
+struct song_node * ordered_insert(struct song_node *node, char *artist, char *name);
 
 int songcmp(struct song_node *a, struct song_node *b);
 

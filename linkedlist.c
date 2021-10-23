@@ -4,7 +4,7 @@
 #include <string.h>
 #include "linkedlist.h"
 
-struct song_node * insert_front(struct song_node *node, char *name, char *artist){
+struct song_node * insert_front(struct song_node *node, char *artist, char *name){
     struct song_node * n = malloc(sizeof(struct song_node));
     strncpy(n->name, name, strlen(name));
     strncpy(n->artist, artist, strlen(artist));
@@ -29,7 +29,7 @@ void print_song_node(struct song_node *node){
     else printf("Node not found\n");
 }
 
-struct song_node * ordered_insert(struct song_node *node, char *name, char *artist){
+struct song_node * ordered_insert(struct song_node *node, char *artist, char *name){
 
 }
 
@@ -70,7 +70,7 @@ struct song_node * random_node(struct song_node *node){
     }
     srand(time(NULL));
     int r = rand() % count;
-    printf("%d %d\n", count, r);
+    // printf("%d %d\n", count, r);
     while(node && r){
         r--;
         node = node->next;
@@ -80,22 +80,24 @@ struct song_node * random_node(struct song_node *node){
 
 struct song_node * remove_node(struct song_node *node, char *artist, char *name){
     if (!node) return node;
-    struct song_node *temp;
     struct song_node *front = node;
     if ((!strcasecmp((node->artist), artist)) && (!strcasecmp((node->name), name))) {
-        temp = node->next;
+        front = node->next;
         free(node);
-        return temp;
+        return front;
     }
+    int status = 0;
     while (node->next) {
+        struct song_node *temp = node->next;
         if ((!strcasecmp(((node->next)->artist), artist)) && (!strcasecmp(((node->next)->name), name))) {
-            temp = node->next;
-            node->next = node->next->next;
+            node->next = temp->next;
             free(temp);
+            status = 1;
             break;
         }
-        else node = (node->next);
+        node = node->next;
     }
+    if(!status) printf("[%s, %s] not found\n", artist, name);
     return front;
 }
 
