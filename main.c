@@ -29,6 +29,9 @@ void song_cmp_test(){
     free(pcomp3);
 }
 
+void random_node_test(){
+    printf("Testing random_node():\n");
+}
 int main(){
     struct song_node * playlist = insert_front(0 ,"Wonderwall","Oasis");
     playlist = insert_front(playlist, "Wish You Were Here","Pink Floyd");
@@ -45,10 +48,15 @@ int main(){
     printf("Testing find_song:\n\t");
     printf("%s\n", find_song(playlist, "Bob Dylan"));
 
-    printf("Testing remove_node:\n\t");
-    print_list(remove_node(playlist, "Pink Floyd", "Wish You Were Here"));
+    printf("Testing random_node:\n\t");
+    print_song_node(random_node(playlist));
+    printf("Completed\n");
+    // printf("Testing remove_node:\n\t");
+    // print_list(remove_node(playlist, "Pink Floyd", "Wish You Were Here"));
 
-    song_cmp_test();
+
+
+    // song_cmp_test();
 
   
 

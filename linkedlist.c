@@ -26,7 +26,7 @@ void print_list(struct song_node *node){
 
 void print_song_node(struct song_node *node){
     if (node) printf("{%s, %s}\n", node->artist, node->name);
-    else printf("Node not found");
+    else printf("Node not found\n");
 }
 
 struct song_node * ordered_insert(struct song_node *node, char *name, char *artist){
@@ -60,8 +60,22 @@ char * find_song(struct song_node *node, char * artist){
     return 0;
 }
 
+// returns a random song from the given playlist
 struct song_node * random_node(struct song_node *node){
-
+    int count = 0;
+    struct song_node *start = node;
+    while(start){
+        count++;
+        start = start->next;
+    }
+    srand(time(NULL));
+    int r = rand() % count;
+    printf("%d %d\n", count, r);
+    while(node && r){
+        r--;
+        node = node->next;
+    }
+    return node;
 }
 
 struct song_node * remove_node(struct song_node *node, char *artist, char *name){
