@@ -4,48 +4,103 @@
 # include <stdlib.h>
 # include "linkedlist.h"
 
-void song_cmp_test(){
-    printf("Testing song_cmp:\n\t");
+void find_test(){
+    struct song_node * playlist = insert_front(0 ,"radiohead", "street spirit (fade out)");
+    playlist = insert_front(playlist, "radiohead","paranoid android");
+    playlist = insert_front(playlist, "pink floyd","time");
+    playlist = insert_front(playlist, "pearl jam","yellow ledbetter");
+    playlist = insert_front(playlist, "pearl jam","even flow");
+    playlist = insert_front(playlist, "pearl jam","alive");
+    playlist = insert_front(playlist, "ac/dc", "thunderstruck");
+    
+    printf("Testing find_node:\n\n");
+    print_list(playlist);
+    printf("\n");
 
-    struct song_node * pcomp1 = insert_front(0, "pearl jam", "even flow");
-    pcomp1 = insert_front(pcomp1, "pearl jam", "even flow");
-    printf("Comparing song: ");
-    print_list(pcomp1);
-    printf("\t\t%d\n", songcmp(pcomp1->next, pcomp1));
+    printf("Looking for [pearl jam: even flow]\n\t");
+    print_song_node(find_node(playlist, "pearl jam", "even flow"));
+    printf("Looking for [pearl jam: daughter]\n\t");
+    print_song_node(find_node(playlist, "pearl jam", "daughter"));
+    printf("\n");
 
-    struct song_node * pcomp2 = insert_front(0, "pearl jam", "even flow");
-    pcomp2 = insert_front(pcomp2, "pearl jam", "alive");
-    printf("\tComparing song: ");
-    print_list(pcomp2);
-    printf("\t\t%d\n", songcmp(pcomp2->next, pcomp2));
+    printf("=============================================\n");
+    printf("Testing find_artist:\n\n");
+    printf("Looking for [pink floyd]\n\t");
+    printf("%s\n", find_artist(playlist,"pink floyd"));
+    printf("Looking for [pearl jam]\n\t");
+    printf("%s\n", find_artist(playlist, "pearl jam"));
 
-    struct song_node * pcomp3 = insert_front(0, "pearl jam", "even flow");
-    pcomp3 = insert_front(pcomp3, "pink floyd", "time");
-    printf("\tComparing song: ");
-    print_list(pcomp3);
-    printf("\t\t%d\n", songcmp(pcomp3->next, pcomp3));
-    free(pcomp1);
-    free(pcomp2);
-    free(pcomp3);
+    playlist = free_list(playlist);
 }
 
+
+void song_cmp_test(){
+    printf("Testing song_cmp:\n\t");
+    struct song_node * playlist = insert_front(0, "pearl jam", "even flow");
+    playlist = insert_front(playlist, "pearl jam", "even flow");
+    playlist = insert_front(playlist, "pearl jam", "alive");
+    playlist = insert_front(playlist, "pink floyd", "time");
+    
+    printf("Comparing songs:\n\t");
+    print_song_node(playlist->next->next->next);
+    printf("\t");
+    print_song_node(playlist->next->next);
+    printf("\t\t%d\n", songcmp(playlist->next->next, playlist->next->next->next));
+
+    printf("\tComparing song:\n\t");
+    print_song_node(playlist->next->next);
+    printf("\t");
+    print_song_node(playlist->next);
+    printf("\t\t%d\n", songcmp(playlist->next->next, playlist->next));
+
+    printf("\tComparing song:\n\t");
+    print_song_node(playlist->next);
+    printf("\t");
+    print_song_node(playlist->next->next);
+    printf("\t\t%d\n", songcmp(playlist->next, playlist->next->next));
+
+    printf("\tComparing songs:\n\t");
+    print_song_node(playlist->next->next);
+    printf("\t");
+    print_song_node(playlist);
+    printf("\t\t%d\n", songcmp(playlist->next->next, playlist));
+    playlist = free_list(playlist);
+    print_list(playlist);
+
+}
 void random_node_test(){
-    printf("Testing random_node():\n");
+    struct song_node * playlist = insert_front(0 ,"radiohead", "street spirit (fade out)");
+    playlist = insert_front(playlist, "radiohead","paranoid android");
+    playlist = insert_front(playlist, "pink floyd","time");
+    playlist = insert_front(playlist, "pearl jam","yellow ledbetter");
+    playlist = insert_front(playlist, "pearl jam","even flow");
+    playlist = insert_front(playlist, "pearl jam","alive");
+    playlist = insert_front(playlist, "ac/dc", "thunderstruck");
+    
+    printf("Testing random_node:\n\n");
+    print_list(playlist);
+    printf("\n");
+
+    print_song_node(random_node(playlist));
+    print_song_node(random_node(playlist));
+    print_song_node(random_node(playlist));
+    print_song_node(random_node(playlist));
+
+    playlist = free_list(playlist);
 }
 
 void remove_node_test(){
     struct song_node * playlist = insert_front(0 ,"radiohead", "street spirit (fade out)");
-    playlist = insert_front(playlist, "radio head","paranoid android");
+    playlist = insert_front(playlist, "radiohead","paranoid android");
     playlist = insert_front(playlist, "pink floyd","time");
     playlist = insert_front(playlist, "pearl jam","yellow ledbetter");
     playlist = insert_front(playlist, "pearl jam","even flow");
     playlist = insert_front(playlist, "pearl jam","alive");
     playlist = insert_front(playlist, "ac/dc", "thunderstruck");
    
-    printf("\n");
+    printf("Testing remove_node:\n\n");
     print_list(playlist);
     printf("\n");
-    printf("Testing remove_node:\n\n");
 
     printf("Removing [ac/dc: thunderstruck]\n\t");
     playlist = remove_node(playlist, "AC/Dc", "thunderstruck");
@@ -59,34 +114,20 @@ void remove_node_test(){
     printf("Removing [pearl jam: yellow ledbetter]\n\t");
     playlist = (remove_node(playlist, "pearl jAM", "yeLLOW ledbetter"));
     print_list(playlist);
-    // free();
+    printf("\n");
+    playlist = free_list(playlist);
+    print_list(playlist);
 }
 int main(){
-    // struct song_node * playlist = insert_front(0 ,"Wonderwall","Oasis");
-    // playlist = insert_front(playlist, "Wish You Were Here","Pink Floyd");
-    // playlist = insert_front(playlist, "All Along the Watchtower","Bob Dylan");
-    // playlist = insert_front(playlist, "Little Wing","Jimi Hendrix");
-    // playlist = insert_front(playlist, "Layla","Cream");
-
-    // printf("Testing print_list:\n\t");
-    // print_list(playlist);
-
-    // printf("Testing find_node:\n\t");
-    // print_song_node(find_node(playlist, "Bob Dylan","All Along the Watchtower"));
-
-    // printf("Testing find_song:\n\t");
-    // printf("%s\n", find_song(playlist, "Bob Dylan"));
-
-    // printf("Testing random_node:\n\t");
-    // print_song_node(random_node(playlist));
-        
-    // printf("Testing remove_node:\n\t");
-    // print_list(remove_node(playlist, "Pink Floyd", "Wish You Were Here"));
-    // print_list(remove_node(playlist, "Pink Floyd", "Wish You Were Here"));
-
-    // song_cmp_test();
-
+    printf("=============================================\n");
+    find_test();
+    printf("=============================================\n");
     remove_node_test();
+    srand(time(NULL));
+    printf("=============================================\n");
+    random_node_test();
+    printf("=============================================\n");
+    song_cmp_test();
 
     return 0;
 }

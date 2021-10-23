@@ -2,10 +2,11 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#define STRING_SIZE 200
 
 struct song_node {
-    char name[200];
-    char artist[200];
+    char name[STRING_SIZE];
+    char artist[STRING_SIZE];
     struct song_node *next;
 };
 
@@ -21,7 +22,7 @@ void print_song_node(struct song_node *node);
 
 struct song_node * find_node(struct song_node *node, char *artist, char *name);
 
-char * find_song(struct song_node *node, char * artist);
+char * find_artist(struct song_node *node, char * artist);
 
 struct song_node * random_node(struct song_node *node);
 

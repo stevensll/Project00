@@ -6,8 +6,8 @@
 
 struct song_node * insert_front(struct song_node *node, char *artist, char *name){
     struct song_node * n = malloc(sizeof(struct song_node));
-    strncpy(n->name, name, strlen(name));
-    strncpy(n->artist, artist, strlen(artist));
+    strncpy(n->name, name, STRING_SIZE);
+    strncpy(n->artist, artist, STRING_SIZE);
     n->next = 0;
     
     if(node) n->next = node;
@@ -52,7 +52,7 @@ struct song_node * find_node(struct song_node *node, char *artist, char *name){
 }
 
 // returns the name of the first song by the given artist
-char * find_song(struct song_node *node, char * artist){
+char * find_artist(struct song_node *node, char * artist){
     while (node) {
         if (!strcasecmp((node->artist), artist)) return node->name;
         else node = (node->next);
@@ -68,7 +68,8 @@ struct song_node * random_node(struct song_node *node){
         count++;
         start = start->next;
     }
-    srand(time(NULL));
+    // we don't seed time here -> if we make the call to this function repeatedly, seed wont refresh fast enough. srand in main
+    // srand(time(NULL));
     int r = rand() % count;
     // printf("%d %d\n", count, r);
     while(node && r){
@@ -78,6 +79,7 @@ struct song_node * random_node(struct song_node *node){
     return node;
 }
 
+// removes the specified node and returns the playlist
 struct song_node * remove_node(struct song_node *node, char *artist, char *name){
     if (!node) return node;
     struct song_node *front = node;
@@ -101,6 +103,15 @@ struct song_node * remove_node(struct song_node *node, char *artist, char *name)
     return front;
 }
 
+// frees the entire playlist
 struct song_node * free_list(struct song_node *node){
-
+    if(!node) return 0;
+    while (node){
+        struct song_node * temp = node;
+        printf("Freeing: ");
+        print_song_node(temp);
+        node = node->next;
+        free(temp);
+    }
+    return node;
 }
