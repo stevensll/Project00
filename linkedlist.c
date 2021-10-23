@@ -29,8 +29,41 @@ void print_song_node(struct song_node *node){
     else printf("Node not found\n");
 }
 
+/* insert alphabetically by artist then by song
+    current does not add if duplicates
+*/
 struct song_node * ordered_insert(struct song_node *node, char *artist, char *name){
+    struct song_node * a = insert_front(0, artist, name);
+    //case node is empty
+    if(!node) return a;
 
+    struct song_node * start = node;
+    
+    //case a comes before starting node
+    if(songcmp(a, node) < 0){
+        return insert_front(start, artist, name);
+    } else if(songcmp(a, node) == 0){
+         //case where a = starting node
+        return a;
+    }
+
+    //other cases
+    while(node->next){
+        if (songcmp(a, node)==0){
+            return start;
+        } else if(songcmp(a, node->next) < 0){
+            a->next = node->next;
+            node->next = a;
+            return start;
+        }  
+        node = node->next;
+    }
+    // if we reach the end, then append a to the end
+    if (songcmp(a, node) == 0){
+        return start;
+    }
+    node->next = a;
+    return start;
 }
 
 // compares alphabetical by artist then by song name

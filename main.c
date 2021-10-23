@@ -33,7 +33,6 @@ void find_test(){
     playlist = free_list(playlist);
 }
 
-
 void song_cmp_test(){
     printf("Testing song_cmp:\n\t");
     struct song_node * playlist = insert_front(0, "pearl jam", "even flow");
@@ -68,6 +67,7 @@ void song_cmp_test(){
     print_list(playlist);
 
 }
+
 void random_node_test(){
     struct song_node * playlist = insert_front(0 ,"radiohead", "street spirit (fade out)");
     playlist = insert_front(playlist, "radiohead","paranoid android");
@@ -118,6 +118,33 @@ void remove_node_test(){
     playlist = free_list(playlist);
     print_list(playlist);
 }
+
+void ordered_insert_test(){
+    struct song_node * playlist = insert_front(0, "a", "r");
+    printf("Testing ordered_insert\n\n");    
+    print_list(playlist);
+    playlist = ordered_insert(playlist, "a", "t");
+    printf("\nInserting {a, t}\n\t");
+    print_list(playlist);
+    playlist = ordered_insert(playlist, "a", "s");
+    printf("Inserting {a, s}\n\t");
+    print_list(playlist);
+    playlist = ordered_insert(playlist, "a", "t");
+    printf("Inserting {a, t}\n\t");
+    print_list(playlist);
+    playlist = ordered_insert(playlist, "b", "a");
+    printf("Inserting {b, a}\n\t");
+    print_list(playlist);
+    playlist = ordered_insert(playlist, "b", "b");
+    printf("Inserting {b, b}\n\t");
+    print_list(playlist);
+    playlist = ordered_insert(playlist, "a", "t");
+    printf("Inserting {b, b}\n\t");
+    print_list(playlist);
+    playlist = ordered_insert(playlist, "a", "a");
+    printf("Inserting {a, a}\n\t");
+    print_list(playlist);
+}
 int main(){
     printf("=============================================\n");
     find_test();
@@ -128,6 +155,7 @@ int main(){
     random_node_test();
     printf("=============================================\n");
     song_cmp_test();
-
+    printf("=============================================\n");
+    ordered_insert_test();
     return 0;
 }
