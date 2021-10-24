@@ -2,13 +2,16 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <ctype.h>
 #include "linkedlist.h"
 #define LIB_SIZE 27
 
 struct song_node ** make_lib();
 struct song_node ** add_list(struct song_node ** lib, struct song_node * node);
 
-struct song_node ** search_song(struct song_node ** lib, char * artist, char * name);
+int lib_index(char *artist);
+
+struct song_node * search_song(struct song_node ** lib, char * artist, char * name);
 
 struct song_node ** search_artist(struct song_node ** lib, char * artist, char * name);
 

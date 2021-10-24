@@ -146,7 +146,7 @@ void ordered_insert_test(){
     print_list(playlist);
 }
 
-void make_lib_test(){
+void lib_tests(){
     struct song_node * a1 = insert_front(0, "a1", "s1");
     a1 = insert_front(a1, "a1", "s2");
     struct song_node * a2 = insert_front(0, "a2", "s1");
@@ -159,6 +159,7 @@ void make_lib_test(){
     struct song_node * a9 = insert_front(0, "a9", "s1");
     struct song_node ** lib = make_lib();
     print_lib(lib);
+    printf("=============================================\n");
     lib = add_list(lib, a1);
     lib = add_list(lib, a2);
     lib = add_list(lib, a3);
@@ -169,7 +170,13 @@ void make_lib_test(){
     lib = add_list(lib, a8);
     lib = add_list(lib, a9);
     print_lib(lib);
-
+    printf("=============================================\n");
+    printf("delete song test: \n");
+    lib = delete_song(lib, "a5", "s1");
+    print_lib(lib);
+    printf("=============================================\n");
+    printf("find artist test: \n");
+    
 }
 
 int main(){
@@ -183,7 +190,7 @@ int main(){
     // printf("=============================================\n");
     // song_cmp_test();
     // printf("=============================================\n");
-    ordered_insert_test();
-    //make_lib_test();
+    //ordered_insert_test();
+    lib_tests();
     return 0;
 }
