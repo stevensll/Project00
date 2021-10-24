@@ -86,7 +86,7 @@ struct song_node ** delete_song(struct song_node ** lib, char * artist, char * n
     return lib;
 }
 
-struct song_node ** free_lib(struct song_node ** lib){
+struct song_node ** clear_lib(struct song_node ** lib){
     int i = 0;
     while(i < LIB_SIZE){
         free_list(lib[i]);

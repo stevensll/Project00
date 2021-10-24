@@ -188,7 +188,73 @@ void lib_tests(){
     print_shuffle(lib);
 }
 
+void lib_tests2(){
+    struct song_node * a1 = insert_front(0, "ac/dc", "thunderstruck");
+    struct song_node * a2 = insert_front(0, "pearl jam", "alive");
+    struct song_node * a3 = insert_front(0, "pearl jam", "even flow");
+    struct song_node * a4 = insert_front(0, "pearl jam", "yellow ledbetter");
+    struct song_node * a5 = insert_front(0, "pink floyd", "time");
+    struct song_node * a6 = insert_front(0, "presidents of the united states of america", "peaches");
+    struct song_node * a7 = insert_front(0, "radiohead", "street spirit (fade out)");
+    struct song_node * a8 = insert_front(0, "radiohead", "paranoid android");
+    struct song_node ** lib = make_lib();
+    printf("=============================================\n");
+    printf("MUSIC LIBRARY TESTS\n");
+    printf("=============================================\n");
+    printf("Testing print_by_letter (p) on empty list: \n");
+    print_by_letter(lib, 'p');
+    printf("=============================================\n");
+    printf("Testing print_library on empty library\n");
+    print_lib(lib);
+    printf("\n=============================================\n");
+    printf("Testing print_library after add_list\n");
+    lib = add_list(lib, a1);
+    lib = add_list(lib, a2);
+    lib = add_list(lib, a3);
+    lib = add_list(lib, a4);
+    lib = add_list(lib, a5);
+    lib = add_list(lib, a6);
+    lib = add_list(lib, a7);
+    lib = add_list(lib, a8);
+    print_lib(lib);
+    printf("=============================================\n");
+    printf("Testing print_by_letter (p): \n");
+    print_by_letter(lib, 'p');
+    printf("=============================================\n");
+    printf("Testing search_song: \nlooking for [pearl jam, alive]\n\t");
+    print_song_node(search_song(lib, "pearl jam", "alive"));
+    printf("Testing search_song: \nlooking for [leonard cohen, hallelujah]\n\t");
+    print_song_node(search_song(lib, "leonard cohen", "hallelujah"));
+    printf("=============================================\n");
+    printf("Testing search_artist: \nlooking for [pearl jam]\n\t");
+    print_song_node(search_artist(lib, "pearl jam"));
+    printf("Testing search_artist: \nlooking for [pink floyd]\n\t");
+    print_song_node(search_artist(lib, "pink floyd"));
+    printf("Testing search_artist: \nlooking for [bob dylan]\n\t");
+    print_song_node(search_artist(lib, "bob dylan"));
+    printf("=============================================\n");
+    printf("Testing delete_song: \ndeleting [pearl jam: alive]\n");
+    lib = delete_song(lib, "pearl jam", "alive");
+    print_lib(lib);
+    printf("=============================================\n");
+    printf("Testing print_by_artist: \nPrinting [pearl jam]\n");
+    print_by_artist(lib, "pearl jam");
+    printf("=============================================\n");
+    printf("Testing print_by_letter: \nPrinting r\n");
+    print_by_letter(lib, 'r');
+    printf("=============================================\n");
+    // printf("Testing print_shuffle: \n");
+    // print_shuffle(lib);
+    printf("=============================================\n");
+    // printf("Testing clear_library: \n");
+    // lib = clear_lib(lib);
+    // printf("Library after clear: \n");
+    // print_lib(lib);
+
+}
+
 int main(){
+    srand(time(NULL));
     // printf("=============================================\n");
     // find_test();
     // printf("=============================================\n");
@@ -200,7 +266,7 @@ int main(){
     // song_cmp_test();
     // printf("=============================================\n");
     //ordered_insert_test();
-    srand(time(NULL));
-    lib_tests();
+    //lib_tests();
+    lib_tests2();
     return 0;
 }
