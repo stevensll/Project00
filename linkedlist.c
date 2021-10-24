@@ -69,9 +69,14 @@ struct song_node * ordered_insert(struct song_node *node, char *artist, char *na
 // compares alphabetical by artist then by song name
 int songcmp(struct song_node *a, struct song_node *b){
     int val = strcasecmp(a->artist, b->artist);
+    if (!isalpha((a->artist)[0]) || !isalpha((b->artist)[0])) {
+        if (isalpha((a->artist)[0])) return 1;
+        else if (isalpha((b->artist)[0])) return -1;
+    }
     if (!val){
         val = strcasecmp(a->name, b->name); 
     }
+
     return val;
 }
 

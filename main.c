@@ -126,7 +126,7 @@ void ordered_insert_test(){
     playlist = ordered_insert(playlist, "a", "t");
     printf("\nInserting {a, t}\n\t");
     print_list(playlist);
-    playlist = ordered_insert(playlist, "a", "s");
+    playlist = ordered_insert(playlist, "/a", "s");
     printf("Inserting {a, s}\n\t");
     print_list(playlist);
     playlist = ordered_insert(playlist, "a", "t");
@@ -135,7 +135,7 @@ void ordered_insert_test(){
     playlist = ordered_insert(playlist, "b", "a");
     printf("Inserting {b, a}\n\t");
     print_list(playlist);
-    playlist = ordered_insert(playlist, "b", "b");
+    playlist = ordered_insert(playlist, "~b", "b");
     printf("Inserting {b, b}\n\t");
     print_list(playlist);
     playlist = ordered_insert(playlist, "a", "t");
@@ -183,7 +183,7 @@ int main(){
     // printf("=============================================\n");
     // song_cmp_test();
     // printf("=============================================\n");
-    // ordered_insert_test();
-    make_lib_test();
+    ordered_insert_test();
+    //make_lib_test();
     return 0;
 }
