@@ -30,7 +30,7 @@ struct song_node * search_song(struct song_node ** lib, char * artist, char * na
 }
 
 struct song_node * search_artist(struct song_node ** lib, char * artist){
-    return lib[lib_index(artist)];
+    return find_artist(lib[lib_index(artist)], artist);
 }
 
 void print_by_letter(struct song_node ** lib, char letter){}

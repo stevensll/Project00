@@ -89,10 +89,10 @@ struct song_node * find_node(struct song_node *node, char *artist, char *name){
     return 0;
 }
 
-// returns the name of the first song by the given artist
-char * find_artist(struct song_node *node, char * artist){
+// returns the pointer to the first song by the given artist
+struct song_node * find_artist(struct song_node *node, char * artist){
     while (node) {
-        if (!strcasecmp((node->artist), artist)) return node->name;
+        if (!strcasecmp((node->artist), artist)) return node;
         else node = (node->next);
     }
     return 0;

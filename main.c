@@ -26,9 +26,9 @@ void find_test(){
     printf("=============================================\n");
     printf("Testing find_artist:\n\n");
     printf("Looking for [pink floyd]\n\t");
-    printf("%s\n", find_artist(playlist,"pink floyd"));
+    printf("%s\n", (find_artist(playlist,"pink floyd"))->name);
     printf("Looking for [pearl jam]\n\t");
-    printf("%s\n", find_artist(playlist, "pearl jam"));
+    printf("%s\n", (find_artist(playlist, "pearl jam"))->name);
 
     playlist = free_list(playlist);
 }
@@ -175,8 +175,10 @@ void lib_tests(){
     lib = delete_song(lib, "a5", "s1");
     print_lib(lib);
     printf("=============================================\n");
-    printf("find artist test: \n");
-    
+    printf("search artist test: \n");
+    struct song_node * node0 = search_artist(lib, "a6");
+    char * title = node0->name;
+    printf("%s\n", title);
 }
 
 int main(){

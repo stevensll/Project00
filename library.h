@@ -13,7 +13,7 @@ int lib_index(char *artist);
 
 struct song_node * search_song(struct song_node ** lib, char * artist, char * name);
 
-struct song_node ** search_artist(struct song_node ** lib, char * artist, char * name);
+struct song_node * search_artist(struct song_node ** lib, char * artist);
 
 void print_by_letter(struct song_node ** lib, char letter);
 
