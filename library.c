@@ -26,16 +26,31 @@ int lib_index(char *artist) {
 }
 
 struct song_node * search_song(struct song_node ** lib, char * artist, char * name){
-    return(find_node(lib[lib_index(artist)], artist, name));
+    return (find_node(lib[lib_index(artist)], artist, name));
 }
 
 struct song_node * search_artist(struct song_node ** lib, char * artist){
-    return find_artist(lib[lib_index(artist)], artist);
+    return (find_artist(lib[lib_index(artist)], artist));
 }
 
-void print_by_letter(struct song_node ** lib, char letter){}
+void print_by_letter(struct song_node ** lib, char letter){
+    char * letterp = &letter;
+    struct song_node * letter_list = lib[lib_index(letterp)];
+    printf("%c: ", letter);
+    print_list(letter_list);
+}
 
-void print_by_artist(struct song_node ** lib, char * artist){}
+void print_by_artist(struct song_node ** lib, char * artist){
+    struct song_node * letter = lib[lib_index(artist)];
+    printf("%s: [", artist);
+    while (letter) {
+        if (!strcmp(letter->artist, artist)) {
+            printf("{%s, %s} |", letter->artist, letter-> name);
+        }
+        letter = letter->next;
+    }
+    printf(" ]\n");
+}
 
 void print_lib(struct song_node ** lib){
     if (lib[0]) {
@@ -52,7 +67,19 @@ void print_lib(struct song_node ** lib){
     }
 }
 
-void print_shuffle(struct song_node ** lib){}
+void print_shuffle(struct song_node ** lib){
+    int i = 0;
+    while (i < 3) {
+        int index = (rand() % LIB_SIZE);
+        struct song_node * node = random_node(lib[index]);
+        while (!node) {
+            index = (rand() % LIB_SIZE);
+            node = random_node(lib[index]);
+        }
+        print_song_node(node);
+        i++;
+    }
+}
 
 struct song_node ** delete_song(struct song_node ** lib, char * artist, char * name){
     lib[lib_index(artist)] = remove_node(lib[lib_index(artist)], artist, name);

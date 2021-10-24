@@ -152,11 +152,11 @@ void lib_tests(){
     struct song_node * a2 = insert_front(0, "a2", "s1");
     struct song_node * a3 = insert_front(0, "a3", "s1");
     struct song_node * a4 = insert_front(0, "a4", "s1");
-    struct song_node * a5 = insert_front(0, "a5", "s1");
+    struct song_node * a5 = insert_front(0, "a6", "s2");
     struct song_node * a6 = insert_front(0, "a6", "s1");
-    struct song_node * a7 = insert_front(0, "a7", "s1");
-    struct song_node * a8 = insert_front(0, "a8", "s1");
-    struct song_node * a9 = insert_front(0, "a9", "s1");
+    struct song_node * a7 = insert_front(0, "b7", "sb1");
+    struct song_node * a8 = insert_front(0, "b8", "sb1");
+    struct song_node * a9 = insert_front(0, "b9", "sb1");
     struct song_node ** lib = make_lib();
     print_lib(lib);
     printf("=============================================\n");
@@ -179,6 +179,13 @@ void lib_tests(){
     struct song_node * node0 = search_artist(lib, "a6");
     char * title = node0->name;
     printf("%s\n", title);
+    printf("=============================================\n");
+    printf("print_by_letter test: \n");
+    print_by_letter(lib, 'a');
+    printf("print_by_artist test: \n");
+    print_by_artist(lib, "a6");
+    printf("shuffle test: \n");
+    print_shuffle(lib);
 }
 
 int main(){
@@ -193,6 +200,7 @@ int main(){
     // song_cmp_test();
     // printf("=============================================\n");
     //ordered_insert_test();
+    srand(time(NULL));
     lib_tests();
     return 0;
 }
