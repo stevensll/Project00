@@ -146,47 +146,47 @@ void ordered_insert_test(){
     print_list(playlist);
 }
 
-void lib_tests(){
-    struct song_node * a1 = insert_front(0, "a1", "s1");
-    a1 = insert_front(a1, "a1", "s2");
-    struct song_node * a2 = insert_front(0, "a2", "s1");
-    struct song_node * a3 = insert_front(0, "a3", "s1");
-    struct song_node * a4 = insert_front(0, "a4", "s1");
-    struct song_node * a5 = insert_front(0, "a6", "s2");
-    struct song_node * a6 = insert_front(0, "a6", "s1");
-    struct song_node * a7 = insert_front(0, "b7", "sb1");
-    struct song_node * a8 = insert_front(0, "b8", "sb1");
-    struct song_node * a9 = insert_front(0, "b9", "sb1");
-    struct song_node ** lib = make_lib();
-    print_lib(lib);
-    printf("=============================================\n");
-    lib = add_list(lib, a1);
-    lib = add_list(lib, a2);
-    lib = add_list(lib, a3);
-    lib = add_list(lib, a4);
-    lib = add_list(lib, a5);
-    lib = add_list(lib, a6);
-    lib = add_list(lib, a7);
-    lib = add_list(lib, a8);
-    lib = add_list(lib, a9);
-    print_lib(lib);
-    printf("=============================================\n");
-    printf("delete song test: \n");
-    lib = delete_song(lib, "a5", "s1");
-    print_lib(lib);
-    printf("=============================================\n");
-    printf("search artist test: \n");
-    struct song_node * node0 = search_artist(lib, "a6");
-    char * title = node0->name;
-    printf("%s\n", title);
-    printf("=============================================\n");
-    printf("print_by_letter test: \n");
-    print_by_letter(lib, 'a');
-    printf("print_by_artist test: \n");
-    print_by_artist(lib, "a6");
-    printf("shuffle test: \n");
-    print_shuffle(lib);
-}
+// void lib_tests(){
+//     struct song_node * a1 = insert_front(0, "a1", "s1");
+//     a1 = insert_front(a1, "a1", "s2");
+//     struct song_node * a2 = insert_front(0, "a2", "s1");
+//     struct song_node * a3 = insert_front(0, "a3", "s1");
+//     struct song_node * a4 = insert_front(0, "a4", "s1");
+//     struct song_node * a5 = insert_front(0, "a6", "s2");
+//     struct song_node * a6 = insert_front(0, "a6", "s1");
+//     struct song_node * a7 = insert_front(0, "b7", "sb1");
+//     struct song_node * a8 = insert_front(0, "b8", "sb1");
+//     struct song_node * a9 = insert_front(0, "b9", "sb1");
+//     struct song_node ** lib = make_lib();
+//     print_lib(lib);
+//     printf("=============================================\n");
+//     lib = add_list(lib, a1);
+//     lib = add_list(lib, a2);
+//     lib = add_list(lib, a3);
+//     lib = add_list(lib, a4);
+//     lib = add_list(lib, a5);
+//     lib = add_list(lib, a6);
+//     lib = add_list(lib, a7);
+//     lib = add_list(lib, a8);
+//     lib = add_list(lib, a9);
+//     print_lib(lib);
+//     printf("=============================================\n");
+//     printf("delete song test: \n");
+//     lib = delete_song(lib, "a5", "s1");
+//     print_lib(lib);
+//     printf("=============================================\n");
+//     printf("search artist test: \n");
+//     struct song_node * node0 = search_artist(lib, "a6");
+//     char * title = node0->name;
+//     printf("%s\n", title);
+//     printf("=============================================\n");
+//     printf("print_by_letter test: \n");
+//     print_by_letter(lib, 'a');
+//     printf("print_by_artist test: \n");
+//     print_by_artist(lib, "a6");
+//     printf("shuffle test: \n");
+//     print_shuffle(lib);
+// }
 
 void lib_tests2(){
     struct song_node * a1 = insert_front(0, "ac/dc", "thunderstruck");
@@ -243,13 +243,13 @@ void lib_tests2(){
     printf("Testing print_by_letter: \nPrinting r\n");
     print_by_letter(lib, 'r');
     printf("=============================================\n");
-    // printf("Testing print_shuffle: \n");
-    // print_shuffle(lib);
+    printf("Testing print_shuffle: \n");
+    print_shuffle(lib);
     printf("=============================================\n");
-    // printf("Testing clear_library: \n");
-    // lib = clear_lib(lib);
-    // printf("Library after clear: \n");
-    // print_lib(lib);
+    printf("Testing clear_library: \n");
+    lib = clear_lib(lib);
+    printf("Library after clear: \n");
+    print_lib(lib);
 
 }
 
@@ -258,7 +258,7 @@ int main(){
     // printf("=============================================\n");
     // find_test();
     // printf("=============================================\n");
-    // remove_node_test();
+    //remove_node_test();
     // srand(time(NULL));
     // printf("=============================================\n");
     // random_node_test();
