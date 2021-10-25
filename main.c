@@ -5,6 +5,9 @@
 # include "library.h"
 
 void find_test(){
+    printf("Printing empty list:\n\n");
+    print_list(0);
+    printf("\n");
     struct song_node * playlist = insert_front(0 ,"radiohead", "street spirit (fade out)");
     playlist = insert_front(playlist, "radiohead","paranoid android");
     playlist = insert_front(playlist, "pink floyd","time");
@@ -105,13 +108,13 @@ void remove_node_test(){
     printf("Removing [ac/dc: thunderstruck]\n\t");
     playlist = remove_node(playlist, "AC/Dc", "thunderstruck");
     print_list(playlist);
-    printf("Removing [radiohead: street spirit (fade out)]\n\t");
+    printf("Removing [radioHeAd: street sPirit (fade out)]\n\t");
     playlist = (remove_node(playlist, "radioHeAd", "street sPirit (fade out)"));
     print_list(playlist);
-    printf("Removing [pearl jam: yellow ledbetter]\n\t");
+    printf("Removing [pearl jam: yeLLOW ledbetter]\n\t");
     playlist = (remove_node(playlist, "pearl JaM", "yeLLOW ledbetter"));
     print_list(playlist);
-    printf("Removing [pearl jam: yellow ledbetter]\n\t");
+    printf("Removing [pearl jam: yeLLOW ledbetter]\n\t");
     playlist = (remove_node(playlist, "pearl jAM", "yeLLOW ledbetter"));
     print_list(playlist);
     printf("\n");
@@ -127,7 +130,7 @@ void ordered_insert_test(){
     printf("\nInserting {a, t}\n\t");
     print_list(playlist);
     playlist = ordered_insert(playlist, "/a", "s");
-    printf("Inserting {a, s}\n\t");
+    printf("Inserting {/a, s}\n\t");
     print_list(playlist);
     playlist = ordered_insert(playlist, "a", "t");
     printf("Inserting {a, t}\n\t");
@@ -136,57 +139,15 @@ void ordered_insert_test(){
     printf("Inserting {b, a}\n\t");
     print_list(playlist);
     playlist = ordered_insert(playlist, "~b", "b");
-    printf("Inserting {b, b}\n\t");
+    printf("Inserting {~b, b}\n\t");
     print_list(playlist);
     playlist = ordered_insert(playlist, "a", "t");
-    printf("Inserting {b, b}\n\t");
+    printf("Inserting {a, t}\n\t");
     print_list(playlist);
     playlist = ordered_insert(playlist, "a", "a");
     printf("Inserting {a, a}\n\t");
     print_list(playlist);
 }
-
-// void lib_tests(){
-//     struct song_node * a1 = insert_front(0, "a1", "s1");
-//     a1 = insert_front(a1, "a1", "s2");
-//     struct song_node * a2 = insert_front(0, "a2", "s1");
-//     struct song_node * a3 = insert_front(0, "a3", "s1");
-//     struct song_node * a4 = insert_front(0, "a4", "s1");
-//     struct song_node * a5 = insert_front(0, "a6", "s2");
-//     struct song_node * a6 = insert_front(0, "a6", "s1");
-//     struct song_node * a7 = insert_front(0, "b7", "sb1");
-//     struct song_node * a8 = insert_front(0, "b8", "sb1");
-//     struct song_node * a9 = insert_front(0, "b9", "sb1");
-//     struct song_node ** lib = make_lib();
-//     print_lib(lib);
-//     printf("=============================================\n");
-//     lib = add_list(lib, a1);
-//     lib = add_list(lib, a2);
-//     lib = add_list(lib, a3);
-//     lib = add_list(lib, a4);
-//     lib = add_list(lib, a5);
-//     lib = add_list(lib, a6);
-//     lib = add_list(lib, a7);
-//     lib = add_list(lib, a8);
-//     lib = add_list(lib, a9);
-//     print_lib(lib);
-//     printf("=============================================\n");
-//     printf("delete song test: \n");
-//     lib = delete_song(lib, "a5", "s1");
-//     print_lib(lib);
-//     printf("=============================================\n");
-//     printf("search artist test: \n");
-//     struct song_node * node0 = search_artist(lib, "a6");
-//     char * title = node0->name;
-//     printf("%s\n", title);
-//     printf("=============================================\n");
-//     printf("print_by_letter test: \n");
-//     print_by_letter(lib, 'a');
-//     printf("print_by_artist test: \n");
-//     print_by_artist(lib, "a6");
-//     printf("shuffle test: \n");
-//     print_shuffle(lib);
-// }
 
 void lib_tests2(){
     struct song_node * a1 = insert_front(0, "ac/dc", "thunderstruck");
