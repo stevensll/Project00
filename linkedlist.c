@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
 #include "linkedlist.h"
 
 struct song_node * insert_front(struct song_node *node, char *artist, char *name){
