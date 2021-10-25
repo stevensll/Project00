@@ -68,6 +68,7 @@ struct song_node * ordered_insert(struct song_node *node, char *artist, char *na
 
 // compares alphabetical by artist then by song name
 int songcmp(struct song_node *a, struct song_node *b){
+    if(!a || !b) return -1;
     int val = strcasecmp(a->artist, b->artist);
     if (!isalpha((a->artist)[0]) || !isalpha((b->artist)[0])) {
         if (isalpha((a->artist)[0])) return 1;
@@ -100,6 +101,7 @@ struct song_node * find_artist(struct song_node *node, char * artist){
 
 // returns a random song from the given playlist
 struct song_node * random_node(struct song_node *node){
+    if(!node) return 0;
     int count = 0;
     struct song_node *start = node;
     while(start){
@@ -119,7 +121,7 @@ struct song_node * random_node(struct song_node *node){
 
 // removes the specified node and returns the playlist
 struct song_node * remove_node(struct song_node *node, char *artist, char *name){
-    if (!node) return node;
+    if (!node) return 0;
     struct song_node *front = node;
     if ((!strcasecmp((node->artist), artist)) && (!strcasecmp((node->name), name))) {
         front = node->next;

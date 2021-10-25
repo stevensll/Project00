@@ -70,7 +70,7 @@ void print_lib(struct song_node ** lib){
 void print_shuffle(struct song_node ** lib){
     int i = 0;
     while (i < 3) {
-        int index = (rand() % LIB_SIZE);
+        int index = (int)(rand() % LIB_SIZE);
         struct song_node * node = random_node(lib[index]);
         while (!node) {
             index = (rand() % LIB_SIZE);

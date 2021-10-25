@@ -243,8 +243,8 @@ void lib_tests2(){
     printf("Testing print_by_letter: \nPrinting r\n");
     print_by_letter(lib, 'r');
     printf("=============================================\n");
-    // printf("Testing print_shuffle: \n");
-    // print_shuffle(lib);
+    printf("Testing print_shuffle: \n");
+    print_shuffle(lib);
     printf("=============================================\n");
     printf("Testing clear_library: \n");
     lib = clear_lib(lib);
@@ -270,7 +270,7 @@ void list_tests() {
 
 int main(){
     srand(time(NULL));
-    list_tests();
+    // list_tests();
     //lib_tests();
     lib_tests2();
     return 0;
