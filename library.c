@@ -6,16 +6,6 @@ struct song_node ** make_lib(){
 }
 //adds a list to the first null entry in the library, if full just returns lib
 struct song_node ** add_list(struct song_node ** lib, struct song_node * node){
-    // int i = 0;
-    // while(i < LIB_SIZE){
-    //     if(!lib[i]){
-    //         lib[i] = node;
-    //         return lib;
-    //     }
-    //     i++;
-    // }
-    // printf("No space left in library");
-    // return lib;
     lib[lib_index(node->artist)] = ordered_insert(lib[lib_index(node->artist)], node->artist, node->name);
     return lib;
 }
