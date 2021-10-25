@@ -149,7 +149,7 @@ void ordered_insert_test(){
     print_list(playlist);
 }
 
-void lib_tests2(){
+void lib_tests(){
     struct song_node * a1 = insert_front(0, "ac/dc", "thunderstruck");
     struct song_node * a2 = insert_front(0, "pearl jam", "alive");
     struct song_node * a3 = insert_front(0, "pearl jam", "even flow");
@@ -232,7 +232,6 @@ void list_tests() {
 int main(){
     srand(time(NULL));
     list_tests();
-    //lib_tests();
-    lib_tests2();
+    lib_tests();
     return 0;
 }
