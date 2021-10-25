@@ -69,15 +69,20 @@ void print_lib(struct song_node ** lib){
 
 void print_shuffle(struct song_node ** lib){
     int i = 0;
+    struct song_node * node = 0;
     while (i < 3) {
-        int index = (int)(rand() % LIB_SIZE);
-        struct song_node * node = random_node(lib[index]);
-        while (!node) {
-            index = (rand() % LIB_SIZE);
-            node = random_node(lib[index]);
+        int index = (rand() % LIB_SIZE);
+        struct song_node * temp = random_node(lib[index]);
+        if(temp && !find_node(node,temp->artist, temp->name)){
+            node = insert_front(node, temp->artist, temp->name);
+            i++;
         }
-        print_song_node(node);
-        i++;
+    }
+    while (node){
+        struct song_node * temp = node;
+        print_song_node(temp);
+        node = node->next;
+        free(temp);
     }
 }
 

@@ -270,7 +270,7 @@ void list_tests() {
 
 int main(){
     srand(time(NULL));
-    // list_tests();
+    list_tests();
     //lib_tests();
     lib_tests2();
     return 0;
